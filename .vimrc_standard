@@ -1,0 +1,97 @@
+""""
+"
+" .vimrc settings
+"
+""""
+
+"""" NeoBundle setting """"
+
+" 起動時にruntimepathにNeoBundleのパスを追加する
+if has('vim_starting')
+  if &compatible
+    set nocompatible
+  endif
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" NeoBundle設定の開始
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" NeoBundleのバージョンをNeoBundle自身で管理する
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" インストールしたいプラグインを記述
+NeoBundle 'Shougo/unite.vim'
+"Neobundle 'Shougo/vimproc.vim'
+"Neobundle 'Shougo/vimshell.vim'
+
+" NeoBundle設定の終了
+call neobundle#end()
+
+filetype plugin indent on
+
+" vim起動時に未インストールのプラグインをインストールする
+NeoBundleCheck
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""
+" 各種設定
+""""
+
+""" 基本設定 """
+
+"backspaceキーを通常エディタと同様の挙動となる
+set backspace=start,eol,indent 
+
+"移動範囲の拡張
+set whichwrap=b,s,[,],<,>,~
+
+"ツールバーの表示
+set guioptions+=T
+
+"行の表示
+set number
+
+"改行時の自動インデント
+set autoindent
+
+"tabキーをスペース2つ分
+set tabstop=2
+
+"tabを半角スペースで挿入
+set expandtab
+
+"自動生成のインデントの幅をスペース4つ分
+set shiftwidth =4
+
+"/検索文字列での検索をした場合にインクリメンタルに結果を表示
+set incsearch
+
+"大文字小文字を区別せずに検索
+set ignorecase
+
+"余計なマウス操作をオフ
+set mouse=
+
+"シンタックスハイライト
+syntax on
+
+"検索時にはハイライトを停止
+set nohlsearch
+
+"ステータスラインを常時表示
+set laststatus=2
+
+"ステータスラインの表示内容（ディレクトリを表示）
+set statusline=%F%r%h%=
+
+"コマンドラインモードでの補完表示形式
+set wildmenu wildmode=list:full
+
+"色彩設定
+highlight StatusLine ctermfg=black ctermbg=grey
+highlight CursorLine ctermfg=none ctermbg=darkgray cterm=none
+highlight MatchParen ctermfg=none ctermbg=darkgray
+highlight Comment ctermfg=none ctermbg=NONE
+highlight Directory ctermfg=DarkGreen ctermbg=NONE
