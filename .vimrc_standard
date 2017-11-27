@@ -71,6 +71,13 @@ set incsearch
 "大文字小文字を区別せずに検索
 set ignorecase
 
+"改行時の自動コメントアウトをオフ
+augroup auto_comment_off
+  autocmd!
+  autocmd BufEnter * setlocal formatoptions-=r
+  autocmd BufEnter * setlocal formatoptions-=o
+augroup END
+
 "余計なマウス操作をオフ
 set mouse=
 
